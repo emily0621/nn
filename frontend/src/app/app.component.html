@@ -1,0 +1,37 @@
+<nav>
+  <button class="nav_button" (click)="predict_on_test_dataset_function()">Predict on test dataset</button>
+  <button class="nav_button" (click)="read_text_from_dataset_function()">Read text from dataset</button>
+</nav>
+<div id="main" *ngIf="predict_on_test_dataset && is_data_loaded">
+  <h1>Read handwriting</h1>
+  <div class="predictions">
+    <div id="text">
+      <div id="labels">
+        <span>Predicted:</span>
+        <span>Actual:</span>
+      </div>
+      <div id="values">
+        <span>{{label}}</span>
+        <span>{{predicted_label}}</span>
+      </div>
+    </div>
+    <img [src]="image"/>
+  </div>
+  <div id="button_wrapper">
+      <button (click)="predict()" class="predict_button">Next</button>
+  </div>
+</div>
+<div id="main" *ngIf="read_text_from_dataset && is_data_loaded" id="form_main">
+  <span class="form_text">{{form_text}}</span>
+  <div id="text_wrapper">
+    <div class="form" *ngFor="let form_img of form_images">
+      <img [src]="'data:image/png;base64,' + form_img" class="form_images"/>
+    </div>
+  </div>
+  <div id="button_wrapper">
+      <button (click)="predict_form()" class="predict_button">Next</button>
+  </div>
+</div>
+<div *ngIf="!is_data_loaded" id="loading_message">
+  <span>Loading...</span>
+</div>

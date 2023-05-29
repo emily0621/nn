@@ -1,0 +1,20 @@
+html, body, app-root {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+}
+
+app-root {
+  flex-direction: column;
+  width: 100%;
+}
+
+
