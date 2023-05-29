@@ -4,5 +4,5 @@ COPY . /backend
 WORKDIR /backend
 RUN pip install -r requirements.txt
 
-EXPOSE 7007
+EXPOSE 5000
 ENTRYPOINT [ "python", "app.py" ]
