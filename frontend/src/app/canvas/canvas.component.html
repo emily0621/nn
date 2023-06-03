@@ -1,0 +1,9 @@
+<div *ngIf="text != ''" class="prediction">
+  <span>Read text:</span>
+  <span>{{text}}</span>
+</div>
+<canvas #canvas width="1500" height="500"></canvas>
+<div class="buttons">
+  <button (click)="saveCanvasAsImage()">Read</button>
+  <button (click)="clean()">Clean</button>
+</div>
