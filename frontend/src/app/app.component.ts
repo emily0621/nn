@@ -1,7 +1,5 @@
-import {AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {concatMap, finalize, fromEvent, pairwise, switchMap, takeUntil, tap} from "rxjs";
-import {CanvasComponent} from "./canvas/canvas.component";
 
 @Component({
   selector: 'app-root',
