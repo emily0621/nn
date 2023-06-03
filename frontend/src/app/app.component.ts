@@ -1,18 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {concatMap, finalize, fromEvent, pairwise, switchMap, takeUntil, tap} from "rxjs";
+import {CanvasComponent} from "./canvas/canvas.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit{
 
   predict_on_test_dataset = true;
   read_text_from_dataset = false;
+  write_and_read = false;
 
   is_data_loaded = false;
-
 
   title = 'frontend';
   image = '';
@@ -22,7 +24,7 @@ export class AppComponent implements OnInit {
   form_images = [];
   form_text = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private renderer: Renderer2, private http: HttpClient) { }
 
   predict(): void {
     this.is_data_loaded = false;
@@ -51,12 +53,20 @@ export class AppComponent implements OnInit {
   predict_on_test_dataset_function() {
     this.predict()
     this.read_text_from_dataset = false;
+    this.write_and_read = false;
     this.predict_on_test_dataset = true;
   }
 
   read_text_from_dataset_function() {
     this.predict_form()
     this.predict_on_test_dataset = false;
+    this.write_and_read = false;
     this.read_text_from_dataset = true;
+  }
+
+  write_and_read_function() {
+    this.read_text_from_dataset = false;
+    this.predict_on_test_dataset = false;
+    this.write_and_read = true;
   }
 }

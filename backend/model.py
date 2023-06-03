@@ -3,10 +3,10 @@ from configuration import PATH_TO_SAVED_FOLDER
 from keras.models import load_model
 from configuration import PADDING_TOKEN
 import keras
-from tensorflow import cast, shape, ones, gather, where, math
+from tensorflow import cast, shape, ones
 import tensorflow as tf
 import numpy as np
-from process_dataset import get_form_dataset, get_symbol_by_num
+from process_dataset import get_form_dataset, get_symbol_by_num, read_own_handwriting
 
 model = None
 predictions = {'images': [], 'predictions': [], 'labels': []}
@@ -92,6 +92,18 @@ def predict_form(form_name):
     prediction_model = keras.models.Model(model.get_layer(name="image").input, model.get_layer(name="output").output)
     result = []
     for data in form_dataset:
+        prediction = decode_predictions(prediction_model.predict(data['image']))
+        result += prediction
+    return ' '.join(result)
+
+
+def predict_own_handwriting():
+    global model
+    load()
+    dataset = read_own_handwriting()
+    prediction_model = keras.models.Model(model.get_layer(name="image").input, model.get_layer(name="output").output)
+    result = []
+    for data in dataset:
         prediction = decode_predictions(prediction_model.predict(data['image']))
         result += prediction
     return ' '.join(result)

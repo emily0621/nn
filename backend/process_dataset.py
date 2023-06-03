@@ -2,7 +2,7 @@ import os
 import numpy as np
 from keras.layers import StringLookup
 from configuration import PATH_TO_IMAGES, IMAGE_WIDTH, IMAGE_HEIGHT, BATCH_SIZE, PATH_TO_FORMS, PATH_TO_SENTENCES_IMAGES, \
-    PATH_TO_SAVED_FOLDER, PADDING_TOKEN
+    PATH_TO_SAVED_FOLDER, PADDING_TOKEN, PATH_TO_TEMP
 import tensorflow as tf
 import pickle
 
@@ -109,6 +109,13 @@ def load_forms(read=False):
 def get_form_dataset(form_name):
     path_to_images = PATH_TO_IMAGES + '\\' + form_name.split('-')[0] + '\\' + form_name
     data = [(path_to_images + '\\' + name, 'label') for name in os.listdir(path_to_images)]
+    dataset = tf.data.Dataset.from_tensor_slices(data).map(process_data, num_parallel_calls=tf.data.AUTOTUNE)
+    return dataset.batch(BATCH_SIZE).cache().prefetch(tf.data.AUTOTUNE)
+
+
+def read_own_handwriting():
+    load_symbols()
+    data = [(PATH_TO_TEMP + 'image.png', 'label')]
     dataset = tf.data.Dataset.from_tensor_slices(data).map(process_data, num_parallel_calls=tf.data.AUTOTUNE)
     return dataset.batch(BATCH_SIZE).cache().prefetch(tf.data.AUTOTUNE)
 

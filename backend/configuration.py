@@ -7,6 +7,7 @@ PATH_TO_IMAGES = PATH_TO_WORDS + 'iam_words\\words\\'
 PATH_TO_FORMS = PROJECT_ROOT + '\\dataset\\sentences\\metadata\\forms.txt'
 PATH_TO_SENTENCES_IMAGES = PROJECT_ROOT + '\\dataset\\sentences\\dataset\\'
 PATH_TO_SAVED_FOLDER = PROJECT_ROOT + '\\saved\\'
+PATH_TO_TEMP = PROJECT_ROOT + '\\temp\\'
 TRAIN_SIZE = 0.8
 VALIDATION_SIZE = 0.54
 BATCH_SIZE = 64

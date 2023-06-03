@@ -25,8 +25,10 @@
 <ul>
 <li>You can predict text by handwriting from test dataset on default tab. Next button shows next word.<br><br>
 <img src="readme_images/img_1.png" alt="img_1.png"></li>
-<li>You can also read full text on the second tab. Next button shows next document.<br><br>
+<li>You can read full text on the second tab. Next button shows next document.<br><br>
 <img src="readme_images/img_2.png" alt="img_2.png"></li>
+<li>You can also write your word on the third tab and then read it. <br><br>
+<img src="readme_images/img_3.png" alt="img_2.png"></li>
 </ul>
 <p><h2>Model evaluation</h2>
 Total count of words:  4456<br>Count of correctly predicted words:  3029<br>Percentage : 67.97576301615798% .  </p>

@@ -119,3 +119,13 @@ h1 {
   font-size: 50px;
 }
 
+#write_main {
+  height: 100%;
+  display: flex;
+}
+
+app-canvas {
+  height: min-content;
+  margin: auto;
+}
+

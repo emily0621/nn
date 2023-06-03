@@ -1,6 +1,7 @@
 <nav>
   <button class="nav_button" (click)="predict_on_test_dataset_function()">Predict on test dataset</button>
   <button class="nav_button" (click)="read_text_from_dataset_function()">Read text from dataset</button>
+  <button class="nav_button" (click)="write_and_read_function()">Write and read</button>
 </nav>
 <div id="main" *ngIf="predict_on_test_dataset && is_data_loaded">
   <h1>Read handwriting</h1>
@@ -31,6 +32,9 @@
   <div id="button_wrapper">
       <button (click)="predict_form()" class="predict_button">Next</button>
   </div>
+</div>
+<div id="main" *ngIf="write_and_read && is_data_loaded" id="write_main">
+  <app-canvas></app-canvas>
 </div>
 <div *ngIf="!is_data_loaded" id="loading_message">
   <span>Loading...</span>
